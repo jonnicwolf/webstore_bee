@@ -26,6 +26,7 @@ const Container = styled.nav`
   background-color: #FF8A03;
   color: #F0EAD6;
   padding: 15px;
+  width: 90%;
 `;
 const Icon = styled.img`
   height: 3rem;
