@@ -55,7 +55,7 @@ const Container = styled.div`
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  transform: translate(-10px,-10px);
+  transform: translate(-10px, -10px);
 `;
 
 export default Waves;
