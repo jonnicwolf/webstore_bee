@@ -50,7 +50,3 @@ const Content = styled.div`
   justify-content: center;
   border-radius: 10px;
 `
-const ShopGroup = styled.div`
-  display: flex;
-  border: 1px solid green;
-`
