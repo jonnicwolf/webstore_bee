@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavBar } from './NavBar';
 import { Item_Card } from './Item_Card';
 import { Hero } from './Hero';
+import { ItemSelectBar } from './ItemSelectBar';
 
 function App() {
   const list = [
@@ -48,6 +49,7 @@ function App() {
     <Container>
       <NavBar />
       <Hero />
+      <ItemSelectBar />
       <Feed>
         {list.map((item,key) => {
           return (
