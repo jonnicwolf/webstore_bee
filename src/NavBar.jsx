@@ -27,6 +27,7 @@ const Container = styled.nav`
   color: #F0EAD6;
   padding: 15px;
   width: 90%;
+  margin-top: 10px;
 `;
 const Icon = styled.img`
   height: 3rem;

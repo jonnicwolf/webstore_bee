@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { NavBar } from './NavBar';
 import { Item_Card } from './Item_Card';
+import { Hero } from './Hero';
 
 function App() {
   const list = [
@@ -46,10 +47,13 @@ function App() {
   return (
     <Container>
       <NavBar />
+      <Hero />
       <Feed>
         {list.map((item,key) => {
           return (
-            <Item_Card key={key} item={item}/>
+            <ItemWrapper>
+              <Item_Card key={key} item={item} />
+            </ItemWrapper>
           )
         })}
       </Feed>
@@ -58,7 +62,7 @@ function App() {
 };
 
 const Container = styled.div`
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   min-height: 100vh;
   z-index: 1;
@@ -71,9 +75,15 @@ const Container = styled.div`
 `;
 const Feed = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 80px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
   align-items: center;
+  // padding: 10px;
 `;
+const ItemWrapper = styled.div`
+  width: calc(50% - 20px);
+  max-width: 400px;
+`
 
 export default App;

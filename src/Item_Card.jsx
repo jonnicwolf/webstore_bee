@@ -7,11 +7,11 @@ export const Item_Card = ({item}) => {
       <Info>
         <Price>
           <Title>{item? item.title : `It's Me, High, I'm the Problem It's Me`}</Title>
-          <Type>
-          {item? item.type : `ROLLING TRAY - Made To Order`}
-        </Type>
-          <Dollar>$</Dollar>
-          {item? Number.parseFloat(item.price).toFixed(2): `20.00`}
+          <Type>{item? item.type : `ROLLING TRAY - Made To Order`}</Type>
+          <span>
+            <Dollar>$</Dollar>
+            {item? Number.parseFloat(item.price).toFixed(2): `20.00`}
+          </span>
         </Price>
       </Info>
     </Container>
@@ -19,7 +19,6 @@ export const Item_Card = ({item}) => {
 };
 
 const Container = styled.div`
-  height: 55vh;
   border-radius: 10px;
   background-color: white;
   font-family: "Noto Sans", sans-serif;
@@ -35,17 +34,16 @@ const Container = styled.div`
 `;
 const Photo = styled.img`
   border-radius: 10px 10px 0 0;
-  height: 80%;
+  width: 100%;
 `;
 const Info = styled.div`
   height: 20%;
-  display: flex;
-  flex-direction: column;
   gap: 5px;
   padding: 0 0 20px 10px;
 `;
 const Title = styled.div`
-  font-size: 1.2rem;
+  font-size: 1rem;
+  text-align: center;
 `
 const Type = styled.div`
   font-size: 0.7rem;
@@ -53,8 +51,13 @@ const Type = styled.div`
 `
 const Price = styled.div`
   font-family: "Noto Sans", sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 `
 const Dollar = styled.span`
   font-size: 1.5rem;

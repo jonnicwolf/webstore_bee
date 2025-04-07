@@ -50,12 +50,12 @@ const WaveGroup3 = styled(AnimatedGroup)`
 `;
 
 const Container = styled.div`
+  display: block;
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: -1;
-  overflow: hidden;
-  transform: translate(-10px, -10px);
+  // transform: translate(-10px, -10px);
 `;
 
 export default Waves;
