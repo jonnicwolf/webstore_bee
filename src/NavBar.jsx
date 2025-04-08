@@ -3,14 +3,12 @@ import styled from "styled-components";
 export const NavBar = () => {
   return (
     <Container>
-      <Logo>
-        <Icon src="https://img.icons8.com/?size=100&id=9222&format=png&color=000000"/>
-        <Title>
-          <span>SHOP</span>
-          <span>ViABiA</span>
-        </Title>
-      </Logo>
       <Burger src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000"/>
+      <Title>
+        <span>SHOP</span>
+        <span>ViABiA</span>
+      </Title>
+      <Icon src="https://img.icons8.com/?size=100&id=lHQbSWVnEGgt&format=png&color=000000"/>
     </Container>
   );
 };
@@ -18,6 +16,7 @@ export const NavBar = () => {
 const Container = styled.nav`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-radius: 10px;
   font-size: 1.5rem;
   font-family: "Bungee Spice", sans-serif;

@@ -1,64 +1,21 @@
 import styled from 'styled-components';
+import { Routes, Route } from 'react-router';
 
 import { NavBar } from './NavBar';
-import { Item_Card } from './Item_Card';
-import { Hero } from './Hero';
-import { ItemSelectBar } from './ItemSelectBar';
+import { Home } from './Home';
+import { ItemDetail } from './ItemDetail';
+import { Sandbox } from './Sandbox';
 
 function App() {
-  const list = [
-    {
-      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
-      title: "It's Me, High, I'm the Problem It's Me",
-      price: 20.00,
-      type: "Rolling Tray"
-    },
-    {
-      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
-      title: "It's Me, High, I'm the Problem It's Me",
-      price: 20.00,
-      type: "Rolling Tray"
-    },
-    {
-      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
-      title: "It's Me, High, I'm the Problem It's Me",
-      price: 20.00,
-      type: "Rolling Tray"
-    },
-    {
-      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
-      title: "It's Me, High, I'm the Problem It's Me",
-      price: 20.00,
-      type: "Rolling Tray"
-    },
-    {
-      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
-      title: "It's Me, High, I'm the Problem It's Me",
-      price: 20.00,
-      type: "Rolling Tray"
-    },
-    {
-      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
-      title: "It's Me, High, I'm the Problem It's Me",
-      price: 20.00,
-      type: "Rolling Tray"
-    },
-  ];
 
   return (
     <Container>
       <NavBar />
-      <Hero />
-      <ItemSelectBar />
-      <Feed>
-        {list.map((item,key) => {
-          return (
-            <ItemWrapper>
-              <Item_Card key={key} item={item} />
-            </ItemWrapper>
-          )
-        })}
-      </Feed>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/listing:id' element={<ItemDetail />} />
+        <Route path='/sandbox' element={<Sandbox />} />
+      </Routes>
     </Container>
   );
 };
@@ -75,17 +32,5 @@ const Container = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
 `;
-const Feed = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  align-items: center;
-  // padding: 10px;
-`;
-const ItemWrapper = styled.div`
-  width: calc(50% - 20px);
-  max-width: 400px;
-`
 
 export default App;

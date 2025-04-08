@@ -1,9 +1,12 @@
-import styled from "styled-components"
+import { Link } from 'react-router';
+import styled from "styled-components";
 
 export const Item_Card = ({item}) => {
   return (
     <Container>
-      <Photo src={item? item.photo : "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg"}/>
+      <Link to={`/listing/${item.id}`}>
+        <Photo src={item? item.photo : "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg"}/>
+      </Link>
       <Info>
         <Price>
           <Title>{item? item.title : `It's Me, High, I'm the Problem It's Me`}</Title>
@@ -44,11 +47,11 @@ const Info = styled.div`
 const Title = styled.div`
   font-size: 1rem;
   text-align: center;
-`
+`;
 const Type = styled.div`
   font-size: 0.7rem;
   font-weight: 400;
-`
+`;
 const Price = styled.div`
   font-family: "Noto Sans", sans-serif;
   font-size: 1.5rem;
@@ -58,7 +61,7 @@ const Price = styled.div`
   align-items: center;
   justify-content: center;
   gap: 5px;
-`
+`;
 const Dollar = styled.span`
   font-size: 1.5rem;
-`
+`;
