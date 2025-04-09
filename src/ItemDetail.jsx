@@ -2,9 +2,48 @@ import { useParams } from 'react-router';
 import styled from 'styled-components'
 
 import { Dropdown } from './Dropdown';
+import { Carousel } from './Carousel';
 
 export const ItemDetail = () => {
   const { id } = useParams();
+  const list = [
+    {
+      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
+      title: "It's Me, High, I'm the Problem It's Me",
+      price: 20.00,
+      type: "Rolling Tray"
+    },
+    {
+      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
+      title: "It's Me, High, I'm the Problem It's Me",
+      price: 20.00,
+      type: "Rolling Tray"
+    },
+    {
+      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
+      title: "It's Me, High, I'm the Problem It's Me",
+      price: 20.00,
+      type: "Rolling Tray"
+    },
+    {
+      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
+      title: "It's Me, High, I'm the Problem It's Me",
+      price: 20.00,
+      type: "Rolling Tray"
+    },
+    {
+      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
+      title: "It's Me, High, I'm the Problem It's Me",
+      price: 20.00,
+      type: "Rolling Tray"
+    },
+    {
+      photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
+      title: "It's Me, High, I'm the Problem It's Me",
+      price: 20.00,
+      type: "Rolling Tray"
+    },
+  ];
   const item = {
     photo: "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg",
     title: "It's Me, High, I'm the Problem It's Me",
@@ -30,6 +69,12 @@ export const ItemDetail = () => {
       <Details>
         <Dropdown title='Item details' info={item.info} itemTitle={item.title} />
       </Details>
+
+      <Details>
+        <Title>Shop similar items</Title>
+        <br/>
+        <Carousel items={list}/>
+      </Details>
     </Container>
   );
 };
@@ -40,6 +85,7 @@ const Container = styled.div`
   background-color: white;
   font-family: "Noto Sans", sans-serif;
   padding-top: 2vh;
+  // padding-bottom: 5vh;
 `;
 const Photo = styled.img`
   width: 100%;
@@ -81,4 +127,5 @@ const Incl = styled(Type)`
 const Details = styled.div`
   margin-top: 20px;
   padding: 15px;
+  overflow: hidden;
 `;
