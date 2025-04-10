@@ -10,7 +10,7 @@ export const Dropdown = ({ title, info, itemTitle }) => {
     <Container>
       <ToggleWrap>
         <Title>{title}</Title>
-        <Toggle onClick={() => setOpen(!open)}>
+        <Toggle onClick={toggleDropdown}>
           {open ? '▲' : '▼'}
         </Toggle>
       </ToggleWrap>
