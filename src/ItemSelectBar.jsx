@@ -34,7 +34,7 @@ const Menu = styled.select`
   font-size: 1.5rem;
 `
 const Sort = styled.img`
-  width: 10%;
+  // width: 100%;
   height: 4vh;
 `
 const Option = styled.option``
