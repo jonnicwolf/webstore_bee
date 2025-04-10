@@ -45,7 +45,7 @@ export const Home = () => {
   ];
 
   return (
-    <>
+    <Container>
       <Hero />
       <ItemSelectBar />
       <Feed>
@@ -57,10 +57,16 @@ export const Home = () => {
           )
         })}
       </Feed>
-    </>
+    </Container>
   );
 };
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+`
 const Feed = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -71,4 +77,4 @@ const Feed = styled.div`
 const ItemWrapper = styled.div`
   width: calc(50% - 20px);
   max-width: 400px;
-`
+`;
