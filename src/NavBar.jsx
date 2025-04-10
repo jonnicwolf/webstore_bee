@@ -38,7 +38,7 @@ export const NavBar = () => {
           <Icon src="https://img.icons8.com/?size=100&id=lHQbSWVnEGgt&format=png&color=000000"/>
         </StyledLink>
       </ClosedNav>
-      {open && <NavDropdown open={open} tabList={tabList} />}
+      <NavDropdown open={open} tabList={tabList} />
     </Container>
   );
 };
@@ -55,6 +55,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  height: auto;
 `;
 const ClosedNav = styled.nav`
   display: flex;

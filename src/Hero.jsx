@@ -28,25 +28,25 @@ export const Hero = () => {
 
 const Container = styled.div`
   width: 100vw;
-`
+`;
 const Banner = styled.div`
   padding: 10px;
-  height: 20vh;
+  height: auto;
   display: flex;
   align-items: center;
   font-size: 1.6rem;
   font-family: "Chicle", cursive;
-`
+`;
 const Button = styled.button`
   background-color: #F82C84;
   color: #F0EAD6;
   border: none;
   padding: 10%;
-`
+`;
 const Content = styled.div`
   background-color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   border-radius: 10px;
-`
+`;
