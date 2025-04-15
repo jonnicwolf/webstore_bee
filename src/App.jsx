@@ -13,7 +13,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/listing:id' element={<ItemDetail />} />
+        <Route path='/listing/:sku' element={<ItemDetail />} />
         <Route path='/sandbox' element={<Sandbox />} />
       </Routes>
     </Container>
