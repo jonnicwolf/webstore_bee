@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Item_Card = ({item}) => {
   return (
     <Container>
-      <Link to={`/listing/${item.id}`}>
+      <Link to={`/listing/${item.sku}`}>
         <Photo src={item? item.photo : "https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg"}/>
       </Link>
       <Info>

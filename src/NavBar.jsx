@@ -1,10 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
+// @ts-ignore
+import { getCart } from './utils/cart';
 import styled from "styled-components";
+
 import { NavDropdown } from './NavDropdown';
 
 export const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    setCart(getCart)
+  },[getCart])
+
+  console.log(cart.length)
+  console.log(cart)
+
 
   const toggleOpen = () => { setOpen(!open) };
 
@@ -35,6 +46,9 @@ export const NavBar = () => {
           </Title>
         </StyledLink>
         <StyledLink to={`checkout`}>
+          <CartNum $cartlength={cart.length}>
+            {cart.length}
+          </CartNum>
           <Icon src="https://img.icons8.com/?size=100&id=lHQbSWVnEGgt&format=png&color=000000"/>
         </StyledLink>
       </ClosedNav>
@@ -67,7 +81,7 @@ const ClosedNav = styled.nav`
   width: 100%;
 `;
 const Icon = styled.img`
-  height: 3rem;
+  height: 2.5rem;
 `;
 const Burger = styled.img`
   height: 2rem;
@@ -75,10 +89,18 @@ const Burger = styled.img`
 const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
-`
+  display: flex;
+`;
 const Title = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   line-height: 0.8;
+  align-self: center;
 `;
+const CartNum = styled.span`
+  align-self: start;
+  font-size: 1rem;
+  color: #000;
+  display: ${(props) => props.$cartlength? 'block' : 'none' }
+`

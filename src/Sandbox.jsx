@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { ItemDetail } from './ItemDetail';
+import { Cart } from './Cart';
 
 export const Sandbox = () => {
   return (
     <Container>
-      <ItemDetail />
+      <Cart />
     </Container>
   );
 };
