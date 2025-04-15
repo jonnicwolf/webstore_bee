@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
-import { getCart, removeFromCart, clearCart, addToCart } from './utils/Cart';
+import {
+  getCart,
+  removeFromCart,
+  clearCart,
+  addToCart,
+  } from './utils/Cart';
 
 export const Cart = () => {
   const list = [
@@ -110,19 +115,13 @@ export const Cart = () => {
       created_at: new Date().toISOString(),
     },
   ];
-  const cart = getCart();
-  const checkTitleLength = (str) => {
-    let s_str = str
-    return s_str.length > 10 ? `${s_str.slice(0, 20)}..` : s_str;
-  }
-  const checkItemQuantity = (sku) => list.filter(item => item.sku === sku).length;
+  const cart = getCart() || [];
+  const checkTitleLength = (str) => str.length > 10 ? `${str.slice(0, 20)}..` : str;
+  const checkItemQuantity = (sku) => cart.filter(item => item.sku === sku).length;
   const uniqueItems = Object.values(
-    list.reduce((acc, item) => {
-      if (!acc[item.sku]) {
-        acc[item.sku] = { ...item, count: 1 };
-      } else {
-        acc[item.sku].count += 1;
-      }
+    cart.reduce((acc, item) => {
+      if (!acc[item.sku]) acc[item.sku] = { ...item, count: 1 };
+      else acc[item.sku].count += 1;
       return acc;
     }, {})
   );
@@ -138,9 +137,7 @@ export const Cart = () => {
       <Bag>
         <PageTitleWrap>
           <img src="https://img.icons8.com/?size=100&id=lHQbSWVnEGgt&format=png&color=000000" alt="" />
-          <MyBag>
-            MY BAG
-          </MyBag>
+          <MyBag>MY BAG</MyBag>
         </PageTitleWrap>
         {uniqueItems.map((item, i) => {
           return (
@@ -150,7 +147,7 @@ export const Cart = () => {
                 <InfoWrap>
                   <Info>
                     <Type>{item.type}</Type>
-                    <Title>{checkTitleLength(item.title)}</Title>
+                    <Title>{checkTitleLength(item.name)}</Title>
                   </Info>
                   <Remove>
                     <img src="https://img.icons8.com/?size=30&id=G01ACMKXfdpJ&format=png&color=000000" alt="" />
@@ -206,7 +203,6 @@ const Bag = styled.div`
   width: 100%;
 `;
 const Summary = styled.div`
-  height: 20vh;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -223,7 +219,7 @@ const Item = styled.div`
   margin: 10px;
 `;
 const Img = styled.img`
-  height: 15vh;
+  height: 9rem;
   border-radius: 10px;
 `;
 const ContentWrap = styled.div`
