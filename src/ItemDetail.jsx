@@ -64,18 +64,6 @@ export const ItemDetail = () => {
     created_at: new Date().toISOString(),
   };
 
-  const handleAddToCart = (item) => {
-    const cartItem = {
-      id: '9a2e1b5a-8e34-4d57-91b5-37cb4d19e0c4',
-      name: item.title,
-      photo: item.photo,
-      price: item.price,
-      quantity: 1
-    };
-
-    addToCart(cartItem);
-  };
-
   return (
     <Container>
       <Group>
@@ -87,7 +75,7 @@ export const ItemDetail = () => {
       <Info>
         <Price>$ {item? Number.parseFloat(item.price).toFixed(2): 'Price Unavailable'}</Price>
         <Incl>duties, taxes and shipping costs not incl. </Incl>
-        <Button onClick={()=> handleAddToCart(item)}>ADD TO BAG</Button>
+        <Button onClick={()=> addToCart(item)}>ADD TO BAG</Button>
       </Info>
 
       <Details>
@@ -109,7 +97,6 @@ const Container = styled.div`
   background-color: white;
   font-family: "Noto Sans", sans-serif;
   padding-top: 2vh;
-  // padding-bottom: 5vh;
 `;
 const Photo = styled.img`
   width: 100%;

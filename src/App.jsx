@@ -4,16 +4,17 @@ import { Routes, Route } from 'react-router';
 import { NavBar } from './NavBar';
 import { Home } from './Home';
 import { ItemDetail } from './ItemDetail';
+import { Cart } from './Cart';
 import { Sandbox } from './Sandbox';
 
 function App() {
-
   return (
     <Container>
       <NavBar />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/listing/:sku' element={<ItemDetail />} />
+        <Route path='/cart' element={<Cart />} />
         <Route path='/sandbox' element={<Sandbox />} />
       </Routes>
     </Container>

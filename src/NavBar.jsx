@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router';
 // @ts-ignore
 import { getCart } from './utils/cart';
@@ -8,23 +8,19 @@ import { NavDropdown } from './NavDropdown';
 
 export const NavBar = () => {
   const [open, setOpen] = useState(false);
-  const [cart, setCart] = useState([]);
-  useEffect(() => {
-    setCart(getCart)
-  },[getCart])
-
-  console.log(cart.length)
-  console.log(cart)
-
-
+  
+  const cart = getCart()
   const toggleOpen = () => { setOpen(!open) };
+  const productTypes = cart.map(item => item.type);
+  console.log('cart: ',cart)
+  console.log('types: ',productTypes)
 
   const tabList = [
     'Shop All',
     'Stickers',
     'Bookmarks',
     'Trays',
-    'LIghters',
+    'Lighters',
     'T-Shirts',
     'Tote Bags',
     'Cups',
@@ -45,7 +41,7 @@ export const NavBar = () => {
             <span>ViABiA</span>
           </Title>
         </StyledLink>
-        <StyledLink to={`checkout`}>
+        <StyledLink to={`cart`}>
           <CartNum $cartlength={cart.length}>
             {cart.length}
           </CartNum>
