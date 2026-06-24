@@ -1,30 +1,17 @@
-import styled  from 'styled-components';
-import { useState } from 'react';
+import styled from 'styled-components';
 
 export const Dropdown = ({ title, info, itemTitle }) => {
-  const [open, setOpen] = useState(false);
-
-  const toggleDropdown = () => { setOpen(!open) };
-
   return (
     <Container>
-      <ToggleWrap>
-        <Title>{title}</Title>
-        <Toggle onClick={toggleDropdown}>
-          {open ? '▲' : '▼'}
-        </Toggle>
-      </ToggleWrap>
-      <Content open={open}>
-        <span>{itemTitle}.</span>
+      <Title>{title}</Title>
+      <Content>
+        <Title>{itemTitle}</Title>
         <span>{info}</span>
         <p>
-          *ALL sticker orders will be sent through the mail, in an envelope with a sticker which will take around 7-10 days to receive. Tracking will not be provided unless an upgrade is purchased.
+          <span style={{fontWeight: 'bold'}}>*</span>ALL sticker orders will be sent through the mail, in an envelope with a sticker which will take around 7-10 days to receive. Tracking will not be provided unless an upgrade is purchased.
         </p>
-        <Shipping>
-          Ships from Kissimmee, FL
-        </Shipping>
+        <Shipping>Ships from Kissimmee, FL</Shipping>
       </Content>
-      
     </Container>
   );
 };
@@ -48,13 +35,9 @@ const Title = styled.div`
   font-size: 1.3rem;
 `;
 const Content = styled.div`
-  max-height: ${({ open }) => (open ? "200px" : "0")};
-  overflow: hidden;
-  opacity: ${({ open }) => (open ? 1 : 0)};
-  transition: all 0.4s ease;
   font-size: 1rem;
   color: #444;
-  padding-top: ${({ open }) => (open ? "10px" : "0")};
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
