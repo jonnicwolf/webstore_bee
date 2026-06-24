@@ -66,51 +66,62 @@ export const ItemDetail = () => {
 
   return (
     <Container>
-      <Group>
-        <Title>{item.title}</Title>
-        <Type>{item.type}</Type>
-      </Group>
+      <Column1>
+        <Photo src='https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg' />
+        <RelatedItems>
+          <Title>Shop similar items</Title>
+          <br/>
+          <Carousel items={list}/>
+        </RelatedItems>
+      </Column1>
 
-      <Photo src='https://i.etsystatic.com/24797225/r/il/f7bd16/6583868199/il_794xN.6583868199_1dsa.jpg' />
-      <Info>
-        <Price>$ {item? Number.parseFloat(item.price).toFixed(2): 'Price Unavailable'}</Price>
-        <Incl>duties, taxes and shipping costs not incl. </Incl>
-        <Button onClick={()=> addToCart(item)}>ADD TO BAG</Button>
-      </Info>
+      <Column2>
+        <Group>
+          <Title>{item.title}</Title>
+          <Type>{item.type}</Type>
+        </Group>
 
-      <Details>
-        <Dropdown title='Item details' info={item.description} itemTitle={item.title} />
-      </Details>
+        <Info>
+          <Price>$ {item? Number.parseFloat(item.price).toFixed(2): 'Price Unavailable'}</Price>
+          <Incl>Duties, taxes and shipping costs not incl. </Incl>
+          <Button onClick={()=> addToCart(item)}>ADD TO BAG</Button>
+        </Info>
 
-      <Details>
-        <Title>Shop similar items</Title>
-        <br/>
-        <Carousel items={list}/>
-      </Details>
+        <Details>
+          <Dropdown title='' info={item.description} itemTitle='' />
+        </Details>
+      </Column2>
     </Container>
   );
 };
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  background-color: white;
+  width: 90vw;
   font-family: "Noto Sans", sans-serif;
   padding-top: 2vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: [1] 90% [2] 10%;
+  gap: 15px;
 `;
 const Photo = styled.img`
   width: 100%;
+  grid-column-start: 1;
+  grid-row-start: 1;
 `;
 const Info = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin-top: 15px;
-  width: 80%;
-  align-self: center;
+  grid-column-start: 2;
+  grid-row-start: 2;
 `;
 const Title = styled.div`
-  font-size: 1.3rem;
+  font-size: 1.5rem;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  font-weight: bold
 `;
 const Type = styled.div`
   font-size: 1rem;
@@ -129,14 +140,22 @@ const Button = styled.button`
   align-self: center;
   color: white;
 `;
-const Group = styled.div`
-  padding: 15px;
-`;
+const Group = styled.div``;
 const Incl = styled(Type)`
   color: #919294;
 `;
-const Details = styled.div`
-  margin-top: 20px;
-  padding: 15px;
-  overflow: hidden;
+const Details = styled.div``;
+const RelatedItems = styled.div`
+  grid-column-start: 1;
+  grid-row-start: 1;
+  grid-row-end: 2;
+`;
+const Column1 = styled.div`
+  grid-column-start: 1;
+`;
+const Column2 = styled.div`
+  grid-column-start: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 `;
