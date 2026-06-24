@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Routes, Route } from 'react-router';
 
+import Waves from './assets/Waves.jsx'
+
 import { NavBar } from './NavBar';
 import { Home } from './Home';
 import { ItemDetail } from './ItemDetail';
@@ -17,14 +19,13 @@ function App() {
         <Route path='/cart' element={<Cart />} />
         <Route path='/sandbox' element={<Sandbox />} />
       </Routes>
+      <Waves />
     </Container>
   );
 };
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
   z-index: 1;
   display: flex;
   flex-direction: column;

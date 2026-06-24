@@ -35,6 +35,7 @@ const waveMotion = keyframes`
 `;
 const AnimatedGroup = styled.g`
   animation: ${waveMotion} 20s linear infinite;
+  will-change: transform;
 `;
 const WaveGroup1 = styled(AnimatedGroup)`
   animation-duration: 18s;

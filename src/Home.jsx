@@ -120,13 +120,16 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 15px;
-`
+  z-index: 1;
+`;
 const Feed = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   align-items: center;
+  height: auto;
+  padding-bottom: 15px;
 `;
 const ItemWrapper = styled.div`
   width: calc(50% - 20px);
