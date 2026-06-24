@@ -32,7 +32,7 @@ export const NavBar = () => {
     <Container>
       <ClosedNav>
         <Burger
-          src="https://img.icons8.com/?size=100&id=8113&format=png&color=000000"
+          src="https://img.icons8.com/?size=100&id=8113&format=png&color=F0EAD6"
           onClick={toggleOpen}
           />
         <StyledLink to={`/`}>
@@ -45,7 +45,7 @@ export const NavBar = () => {
           <CartNum $cartlength={cart.length}>
             {cart.length}
           </CartNum>
-          <Icon src="https://img.icons8.com/?size=100&id=lHQbSWVnEGgt&format=png&color=000000"/>
+          <Icon src="https://img.icons8.com/?size=100&id=lHQbSWVnEGgt&format=png&color=F0EAD6"/>
         </StyledLink>
       </ClosedNav>
       <NavDropdown open={open} tabList={tabList} />
@@ -81,6 +81,7 @@ const Icon = styled.img`
 `;
 const Burger = styled.img`
   height: 2rem;
+  color: #F0EAD6;
 `;
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -93,10 +94,13 @@ const Title = styled.div`
   flex-direction: column;
   line-height: 0.8;
   align-self: center;
+  padding: 15px;
+  background-color: #F0EAD6;
+  border-radius: 10px;
 `;
 const CartNum = styled.span`
   align-self: start;
   font-size: 1rem;
   color: #000;
   display: ${(props) => props.$cartlength? 'block' : 'none' }
-`
+`;
