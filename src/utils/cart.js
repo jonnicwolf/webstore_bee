@@ -15,7 +15,7 @@ export const addToCart = (item) => {
   if (index > -1) {
     cart[index].quantity += item.quantity || 1;
   } else {
-    cart.push({ ...item, quantity: item.quantity, price: item.price || 1 });
+    cart.push({ ...item });
   }
   saveCart(cart);
 };

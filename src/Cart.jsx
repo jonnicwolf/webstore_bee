@@ -5,7 +5,7 @@ import {
   removeFromCart,
   clearCart,
   addToCart,
-  } from './utils/Cart';
+  } from './utils/cart';
 
 export const Cart = () => {
   const list = [
@@ -115,7 +115,7 @@ export const Cart = () => {
       created_at: new Date().toISOString(),
     },
   ];
-  const cart = getCart() || [];
+  const cart = getCart();
   const checkTitleLength = (str) => str.length > 10 ? `${str.slice(0, 20)}..` : str;
   const checkItemQuantity = (sku) => cart.filter(item => item.sku === sku).length;
   const uniqueItems = Object.values(
@@ -147,7 +147,7 @@ export const Cart = () => {
                 <InfoWrap>
                   <Info>
                     <Type>{item.type}</Type>
-                    <Title>{checkTitleLength(item.name)}</Title>
+                    {/* <Title>{checkTitleLength(item.name)}</Title> */}
                   </Info>
                   <Remove>
                     <img src="https://img.icons8.com/?size=30&id=G01ACMKXfdpJ&format=png&color=000000" alt="" />
