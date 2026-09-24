@@ -126,8 +126,9 @@ export const Cart = () => {
     let i = 1;
 
     while (i < count) {
-      r.push(i)
-    }
+      r.push(i);
+      i++;
+    };
 
     return r;
   };
