@@ -6,6 +6,7 @@ import Waves from './assets/Waves.jsx'
 import { NavBar } from './NavBar';
 import { Home } from './Home';
 import { ItemDetail } from './ItemDetail';
+import { CheckoutModal } from './Checkout.jsx';
 import { Cart } from './Cart';
 import { Sandbox } from './Sandbox';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/listing/:sku' element={<ItemDetail />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/checkout' element={<CheckoutModal />} />
         <Route path='/sandbox' element={<Sandbox />} />
       </Routes>
       <Waves />
