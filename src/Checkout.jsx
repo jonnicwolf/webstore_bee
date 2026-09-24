@@ -5,9 +5,14 @@ import {
   EmbeddedCheckout
 } from '@stripe/react-stripe-js';
 
+import {
+  getCart,
+} from './utils/cart';
+
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
-export const CheckoutModal = ({ cartItems }) => {
+export const CheckoutModal = () => {
+  const cartItems = getCart();
   const fetchClientSecret = useCallback(async () => {
     const response = await fetch('http://localhost:4000/api/create-checkout-session', {
       method: 'POST',

@@ -1,3 +1,5 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 import {
@@ -8,6 +10,9 @@ import {
   } from './utils/cart';
 
 export const Cart = () => {
+  const navigate = useNavigate();
+  const cart = getCart();
+
   const list = [
     {
       id: 1,
@@ -115,7 +120,18 @@ export const Cart = () => {
       created_at: new Date().toISOString(),
     },
   ];
-  const cart = getCart();
+
+  const genOptions = (count) => {
+    let r = [];
+    let i = 1;
+
+    while (i < count) {
+      r.push(i)
+    }
+
+    return r;
+  };
+
   const checkTitleLength = (str) => str.length > 10 ? `${str.slice(0, 20)}..` : str;
   const checkItemQuantity = (sku) => cart.filter(item => item.sku === sku).length;
   const uniqueItems = Object.values(
@@ -132,6 +148,26 @@ export const Cart = () => {
   }
   const total = cart.reduce((sum,item) => sum + (item.price * item.quantity), 0)
 
+  const handleProceedToCheckout = () => {
+    if (cart.length === 0) return;
+
+    const formattedLineItems = uniqueItems.map((item) => ({
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: item.title || item.name,
+          images: item.photo ? [item.photo] : [],
+        },
+        unit_amount: Math.round(
+          (item.discount ? discountFetch(item.price, 0.25) : item.price) * 100
+        ),
+      },
+      quantity: item.count || item.quantity || 1,
+    }));
+
+    navigate('/checkout', { state: { lineItems: formattedLineItems } });
+  };
+
   return (
     <Container>
       <Bag>
@@ -139,36 +175,30 @@ export const Cart = () => {
           <img src="https://img.icons8.com/?size=100&id=lHQbSWVnEGgt&format=png&color=000000" alt="" />
           <MyBag>MY BAG</MyBag>
         </PageTitleWrap>
+
         {uniqueItems.map((item, i) => {
           return (
-            <Item key={i}>
-              <Img src={item.photo}/>
+            <Item key={item.sku || i}>
+              <Img src={item.photo} />
               <ContentWrap>
                 <InfoWrap>
                   <Info>
                     <Type>{item.type}</Type>
                     {/* <Title>{checkTitleLength(item.name)}</Title> */}
                   </Info>
-                  <Remove>
-                    <img src="https://img.icons8.com/?size=30&id=G01ACMKXfdpJ&format=png&color=000000" alt="" />
+                  <Remove onClick={()=> removeFromCart(item.sku)}>
+                    <img src="https://img.icons8.com/?size=30&id=G01ACMKXfdpJ&format=png&color=000000" alt="Remove item" />
                   </Remove>
                 </InfoWrap>
                 <PriceQuantity>
-                  <NumericDropdown>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                  <NumericDropdown defaultValue={item.count}>
+                    {genOptions(10).map(n=> (
+                      <option key={n} value={n}>{n}</option>
+                    ))}
                   </NumericDropdown>
                   <PriceWrap>
-                    <DiscountPrice>${discountFetch(item.price, 0.25).toFixed()}</DiscountPrice>
-                    <Price>${item.price}</Price>
+                    <DiscountPrice>${discountFetch(item.price, 0.25).toFixed(2)}</DiscountPrice>
+                    <Price>${item.price.toFixed(2)}</Price>
                   </PriceWrap>
                 </PriceQuantity>
               </ContentWrap>
@@ -184,7 +214,7 @@ export const Cart = () => {
           </PriceWrap>
         </TotalWrap>
         <span>Shipping and taxes calculated in checkout</span>
-        <Checkout>CHECKOUT</Checkout>
+        <Checkout onClick={handleProceedToCheckout} disabled={cart.length === 0}>CHECKOUT</Checkout>
       </Summary>
     </Container>
   );
